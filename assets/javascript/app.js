@@ -97,11 +97,6 @@ timeConverter: function(t){
 $("#submitBtn").on("click", function () {
     alert("submitted");
 
-var questions = {
-    q1: ["Nakia was born in Wakanda", "t"],
-    q2: ["Who was the villain?", "t"],
-
-};
 
 //We start the game with a score of 0
 var score = 0; 
@@ -113,10 +108,10 @@ var questionsArray = [questions.q1, questions.q2];
 //Functions ==================================================================
 
 // Function to render questions
-function renderQuestion() {
-if (questionIndex <= (questionsArray.length - 1)) {
-    document.querySelector("#question").innerHTML = questionsArray[questionIndex][0];
-}
+// function renderQuestion() {
+// if (questionIndex <= (questionsArray.length - 1)) {
+//     document.querySelector("#question").innerHTML = questionsArray[questionIndex][0];
+// }
 
 }
 
@@ -158,4 +153,4 @@ document.onkeyup = function(event) {
 
     };
 
-}
+}):
