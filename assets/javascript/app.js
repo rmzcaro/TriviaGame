@@ -28,13 +28,6 @@ Create background and questions
 
 //CODE BEGINS HERE
 
-window.onload = function() {
-    $("#stop").on("click", stopwatch.stop);
-    $("#reset").on("click", stopwatch.reset);
-    $("#start").on("click", stopwatch.start);
-  };
-
-
   //Var that will hold interval that runs stopwatch
   var intervalId;
 
@@ -101,8 +94,13 @@ timeConverter: function(t){
 
 //Object question for quiz game//
 
+$("#submitBtn").on("click", function () {
+    alert("submitted");
+
 var questions = {
     q1: ["Nakia was born in Wakanda", "t"],
+    q2: ["Who was the villain?", "t"],
+
 };
 
 //We start the game with a score of 0
@@ -113,6 +111,7 @@ var questionIndex = 0;
 var questionsArray = [questions.q1, questions.q2];
 
 //Functions ==================================================================
+
 // Function to render questions
 function renderQuestion() {
 if (questionIndex <= (questionsArray.length - 1)) {
@@ -157,6 +156,6 @@ document.onkeyup = function(event) {
     questionIndex++;
     renderQuestion();
 
-    }
+    };
 
-};
+}
