@@ -23,22 +23,23 @@ function updateScore() {
 // MAIN TRIVIA BEGINS HERE
 
 // when a user presses a key, it will run the function 
-$("#triviaGame").click(function() {
-    console.log("clicked");
+$("#triviaGame").click(function(event) {
+    // determine which key was pressed
+    var userInput = $("input[type=radio]:checked").val(); 
+    console.log(userInput);
+
+    // if correct answer, increase and update score
+    if (userInput === answersArray[answersIndex][0]) {
+        console.log("clicks match!");
+
+    } else {
+        console.log("no match!")
+    }
 
 })
-// document.onkeyup = function(event) {
 
-    // // determine which key was pressed
-    // var userInput = String.fromCharCode(event.which); 
+    
 
-    // // if correct answer, increase and update score
-    // if (userInput === answersArray[answersIndex][0]) {
-    //     console.log("clicked");
-
-    // }
-
-// }
 // -------------------------------------------------
 
 // TIMER BEGINS HERE 
