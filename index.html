@@ -8,30 +8,33 @@ Once user completes all questions, user can submit and see the number of correct
 
 If time is up before user completes, end game and show number of correct, incorrect answers, unanswered
 
---> 
+-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 </head>
+
 <body>
 
     <h1>Trivia Game</h1>
 
     <button id="start">Begin Trivia!</button>
-   
-    <div id ="time-left">text</div>
 
-    <p id = "score"></p>
-    <p id = "question"></p>
+    <div id="time-left">text</div>
 
-    <!--form here --> 
-     <div class = "container"> 
+    <p id="score"></p>
+    <p id="question"></p>
 
-        <form name="triviaForm"></form>
+    <!--form here -->
+    <div class="container">
+        <div id="triviaGame">
+
+            <form name="triviaForm"></form>
 
             <h3>1. Where was Nakia born?</h3>
             <label class="radio-inline">
@@ -49,32 +52,34 @@ If time is up before user completes, end game and show number of correct, incorr
 
             <h3>2. Where was Nakia age?</h3>
             <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="1"> United States
+                <input type="radio" class="q1" name="question2" value="1"> 29
             </label>
             <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="2"> Wakanda
+                <input type="radio" class="q1" name="question2" value="2"> 18
             </label>
             <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="3"> Mexico
+                <input type="radio" class="q1" name="question2" value="3"> 30
             </label>
             <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="4"> France
+                <input type="radio" class="q1" name="question2" value="4"> Unknown
             </label>
-        </form>
+            </form>
 
-        <div id = "trivia-results">
-            <div id="incorrect"></div>
-            <div id ="questions-unanswered"></div>
+            <div id="trivia-results">
+                <div id="incorrect"></div>
+                <div id="questions-unanswered"></div>
+
+            </div>
 
         </div>
 
 
-     </div>
+    </div>
 
     <!--jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--script -->
-<script type="text/javascript" src="assets/javascript/app.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 
