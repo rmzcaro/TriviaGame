@@ -1,16 +1,30 @@
+<!--PSEUDOCODE 
+
+When user loads page show list of questions and timer begins 
+
+User is able to select one answer only 
+
+Once user completes all questions, user can submit and see the number of correct, incorrect, and unanswered 
+
+If time is up before user completes, end game and show number of correct, incorrect answers, unanswered
+
+--> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <title>Trivia Game</title>
 </head>
 <body>
 
     <h1>Trivia Game</h1>
+
+    <button id="start">Begin Trivia!</button>
+   
+    <div id ="time-left">text</div>
+
     <p id = "score"></p>
     <p id = "question"></p>
 
@@ -32,15 +46,36 @@
             <label class="radio-inline">
                 <input type="radio" class="q1" name="question1" value="4"> France
             </label>
+
+            <h3>2. Where was Nakia age?</h3>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question2" value="1"> United States
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question2" value="2"> Wakanda
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question2" value="3"> Mexico
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question2" value="4"> France
+            </label>
         </form>
+
+        <div id = "trivia-results">
+            <div id="incorrect"></div>
+            <div id ="questions-unanswered"></div>
+
+        </div>
 
 
      </div>
 
-    
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
-
-    
+    <!--jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--script -->
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
+
 
 </html>
