@@ -33,11 +33,6 @@ var answersIndex = 0;
 // array of answers 
 var answersArray = [answers.q1, answers.q2];
 
-// Clock
-var counter= 0; 
-var intervalId = 0;
-var timeCounter = 30; 
-
 // =======================================================
 
 // MAIN TRIVIA BEGINS HERE
@@ -60,13 +55,6 @@ function showQuestion() {
 // MAIN LOGIC 
 
 // START THE GAME 
-$("#start").on("click", function(event) {
-    
-    // timer goes here
-    clock();
-    // questions to show 
-});
-
 
 
 
@@ -115,25 +103,67 @@ $("#triviaForm").click(function () {
 // TIMER BEGINS HERE 
 
 // upon load show that 5 seconds left 
+$("#start").on("click", function(event) {
+   countdown.start;
+});
+
+// window.onload = function () {
+//     $("#start").on("click", countdown.start);
+//     // showQuestion();
+// };
+
+// interval that holds countdown
+var intervalId;
 
 // prevents clock from speeding up unncecessarily 
+var clockRunning = false;
 
- function clock() {
-    // every second show time left
-    intervalId = setInterval(timeLeft, 1000);
+var countdown = {
 
+    time: 0,
 
-    function timeLeft(){
-        if (timeCounter === 0) {
-            clearInterval(intervalId);
-            // outOfTime();
-        } else if (timeCounter > 0 ){
-            timeCounter--;
+    // if start is clicked start counter    
+    start: function () {
+
+        // use the setInterval to start the counter 
+
+        if (!clockRunning) {
+            intervalId = setInterval(countdown.count, 1000);
+            // console.log(intervalId + "line 22")
+            clockRunning = true;
         }
-    $("#time-left").html(timeCounter);
+    },
+    count: function () {
+        // countdown
+        countdown.time++;
+        // get the current time
+        var converted = countdown.timeConverter(countdown.time);
+        // console.log(converted);
+
+        // if 10 seconds went by END THE GAME
+        if (converted === "05") {
+            clearInterval(intervalId);
+            clockRunning = false;
+        }
+
+        // use the variable to show the converted time in the display div 
+        $("#time-left").text(converted);
+        if (converted === "05") {
+            var timeUp = $("#time-left").text("TIME IS UP");
+            gameOver();
+        }
+
+    },
+    timeConverter: function (t) {
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        return seconds;
     }
-}
-    
+};
+
 
 // function when game over
 function gameOver() {
