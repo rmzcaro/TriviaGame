@@ -144,7 +144,7 @@ $("#answer").on("click", ".answerChoice", function(event) {
     } else if (answerChoice !== correctChoice) {
         // console.log("wrong")
         // increase answers wrong 
-        // wrongGuess();
+        wrongGuess();
         clearInterval(intervalId);
 
     }
@@ -154,11 +154,32 @@ $("#answer").on("click", ".answerChoice", function(event) {
 
   function correctGuess(){
       score++;
+      $("#time-left").hide();
       gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>"
       + "<h2 class = 'text-center'> Correct! <br> <br>The answer is: " + correctChoice + "</h2>";
     // console.log(gameHTML);
     $("#triviaGame").html(gameHTML);
+
+    setTimeout(bridge, 2500);
+    }; 
+
+    function bridge() {
+        console.log("briding")
     }
+
+// if wrong guess 
+function wrongGuess(){
+    wrong++;
+    $("#time-left").hide();
+    gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>"
+    + "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
+  // console.log(gameHTML);
+  $("#triviaGame").html(gameHTML);
+
+  $("#question").empty();
+  $("#answer").empty();
+
+  }; 
 
 
 //====================================================
