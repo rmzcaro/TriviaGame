@@ -119,7 +119,7 @@ function correctGuess() {
     // console.log(gameHTML);
     $("#summary").html(gameHTML);
 
-    setTimeout(bridge, 2500);
+    setTimeout(bridge, 2000);
 };
 
 // bridges to next question or ends game 
@@ -144,10 +144,14 @@ function bridge() {
 function wrongGuess() {
     wrong++;
     $("#time-left").hide();
+    $("#question").empty();
+    $("#answer").empty();
     gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>" +
         "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
     // console.log(gameHTML);
-    $("#triviaGame").html(gameHTML);
+    $("#summary").html(gameHTML);
+
+    setTimeout(bridge, 2000);
 };
 
 
@@ -179,6 +183,11 @@ function timeUp() {
 // function when game over
 function gameOver() {
     console.log("game over");
+    $("#summary").empty();
+    // byeMsg = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>" +
+    // "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
+
+    $("#finalSummary").append( "<h3 class = 'text-center timer-p'> Game over!<span class = 'timer'>" + "</span></h3>")
     $("#score").append("Total correct: " + score);
     $("#wrong").append("Total incorrect: " + wrong);
     // total unanswered
