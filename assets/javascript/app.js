@@ -36,8 +36,7 @@ var timeCounter = 30;
 //     "D. Physics",
 //     "B. Vibranium"
 // ]
-var trivia = [
-    {
+var trivia = [{
         // image: 
         q: "Black Panther has a degree in: ",
         choices: ["Chemistry", "Astronomy", "Computer science", "Physics"],
@@ -112,50 +111,33 @@ $("#triviaForm").click(function () {
 
 // -------------------------------------------------
 
-function generateHTML() {
-    console.log("generateHTML  counter " + counter);
-    //<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p>
-    gameHTML =
-        "<h2 class='text-center timer-p'> Time Remaining: <span class='timer'>" +
-        timerCounter +
-        "</span></h2><h3 class='text-center'>" +
-        questionsArray[counter] +
-        "</h3><h3 class='answer'>A. " +
-        answersArray[counter][0] +
-        "</h3><h3 class='answer'>B. " +
-        answersArray[counter][1] +
-        "</h3><h3 class='answer'>C. " +
-        answersArray[counter][2] +
-        "</h3><h3 class='answer'>D. " +
-        answersArray[counter][3] + "</h3>";
-    $(".gameDiv").html(gameHTML);
-    console.log("generateHTML counter2 " + counter);
-};
-
-
 //------------------------------------------------
 // TRIVIA QUESTIONS BEGIN HERE
 
 // if more questions render next question
 function showQuestion() {
-$("#question").html("<p class= 'text'>" + trivia[questionIndex].q + "</p>");
+    $("#question").html("<p class= 'text'>" + trivia[questionIndex].q + "</p>");
 
-// answers 
-answerInput = "<p class = 'answerChoice'>" + trivia[questionIndex].choices[0] 
-+ "</p> <p class = 'answerChoice'>" 
-+ trivia[questionIndex].choices[1] 
-+ "</p> <p class = 'answerChoice'>"
-+ trivia[questionIndex].choices[2]
-+ "</p> <p class = 'answerChoice'>"
-+ trivia[questionIndex].choices[3]
-+ "</p>"
-
-;
-$("#answer").html(answerInput);
+    // answers 
+    answerInput = "<p class = 'answerChoice'>" + trivia[questionIndex].choices[0] +
+        "</p> <p class = 'answerChoice'>" +
+        trivia[questionIndex].choices[1] +
+        "</p> <p class = 'answerChoice'>" +
+        trivia[questionIndex].choices[2] +
+        "</p> <p class = 'answerChoice'>" +
+        trivia[questionIndex].choices[3] +
+        "</p>";
+    $("#answer").html(answerInput);
 }
 
-// ** updating score may need to be added
-
+// user selects answer 
+$("#answer").on("click", ".answerChoice", function(event) {
+    // console.log("hi clicked")
+    answerChoice = $(this).text();
+    console.log(answerChoice);
+    correctChoice = trivia[questionIndex].choices[trivia[questionIndex].correctAns];
+    console.log(correctChoice);
+})
 //====================================================
 
 // TIMER BEGINS HERE 
