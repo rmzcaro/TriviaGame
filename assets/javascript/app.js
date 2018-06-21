@@ -72,7 +72,7 @@ $("#start").on("click", function (event) {
 // if more questions render next question
 function showQuestion() {
 
-    console.log("show question running");
+    // console.log("show question running");
     $("#question").html("<p class= 'text'>" + trivia[questionIndex].q + "</p>");
 
     // answers 
@@ -85,18 +85,16 @@ function showQuestion() {
         trivia[questionIndex].choices[3] +
         "</p>";
     $("#answer").html(answerInput);
-    console.log(answerInput + "at line 88");
+    // console.log(answerInput + "at line 88");
 } 
-
-// showQuestion();
 
 // user selects answer 
 $("#answer").on("click", ".answerChoice", function (event) {
     // console.log("hi clicked")
     answerChoice = $(this).text();
-    console.log(answerChoice);
+    // console.log(answerChoice);
     correctChoice = trivia[questionIndex].choices[trivia[questionIndex].correctAns];
-    console.log(correctChoice);
+    // console.log(correctChoice);
     if (answerChoice === correctChoice) {
         correctGuess();
         clearInterval(intervalId);
@@ -127,7 +125,7 @@ function correctGuess() {
 // bridges to next question or ends game 
 function bridge() {
     // console.log(questionIndex);
-    if (questionIndex < 3) {
+    if (questionIndex < 2) {
         questionIndex++;
         // console.log(questionIndex);
         showQuestion();
@@ -137,18 +135,8 @@ function bridge() {
         timeCounter = 30;
         clock();
 
-        //     // THIS IS WHERE I LEFT OFF, I NEED THE NEXT QUESTION TO RENDER 
-        //     // ONCE THE FIRST QUESTION HAS BEEN SUBMITTED 
-
-        //     // $("#time-left").show();
-        //     // timeCounter = 30; 
-        //     // clock();
-
-        //  }
-        //   else {
-        //     // endGame();
     } else {
-        console.log("huh???")
+        gameOver();
     }
 }
 
@@ -183,8 +171,14 @@ function clock() {
 }
 
 
+// function when time is up 
+function timeUp() {
+    console.log("time up")
+}
+
 // function when game over
 function gameOver() {
+    console.log("game over");
     $("#score").append("Total correct: " + score);
     $("#wrong").append("Total incorrect: " + wrong);
     // total unanswered
