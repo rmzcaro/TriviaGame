@@ -137,7 +137,30 @@ $("#answer").on("click", ".answerChoice", function(event) {
     console.log(answerChoice);
     correctChoice = trivia[questionIndex].choices[trivia[questionIndex].correctAns];
     console.log(correctChoice);
-})
+    if (answerChoice === correctChoice){
+        correctGuess();
+        clearInterval(intervalId);
+        // increase wins
+    } else if (answerChoice !== correctChoice) {
+        // console.log("wrong")
+        // increase answers wrong 
+        // wrongGuess();
+        clearInterval(intervalId);
+
+    }
+}); 
+
+// if correct guess 
+
+  function correctGuess(){
+      score++;
+      gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>"
+      + "<h2 class = 'text-center'> Correct! <br> <br>The answer is: " + correctChoice + "</h2>";
+    // console.log(gameHTML);
+    $("#triviaGame").html(gameHTML);
+    }
+
+
 //====================================================
 
 // TIMER BEGINS HERE 
