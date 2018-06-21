@@ -65,6 +65,7 @@ $("#start").on("click", function(event) {
     // timer goes here
     clock();
     // questions to show 
+    showQuestion();
 });
 
 
@@ -113,15 +114,10 @@ $("#triviaForm").click(function () {
 // -------------------------------------------------
 
 // TIMER BEGINS HERE 
-
-// upon load show that 5 seconds left 
-
-// prevents clock from speeding up unncecessarily 
-
+ 
  function clock() {
     // every second show time left
     intervalId = setInterval(timeLeft, 1000);
-
 
     function timeLeft(){
         if (timeCounter === 0) {
