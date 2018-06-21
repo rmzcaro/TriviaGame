@@ -27,7 +27,7 @@ var trivia = [{
     {
         // image: 
         q: "What rare metal is mined in Wakanda?",
-        choices: ["Iron", "Virbanium", "Copper", "Ore"],
+        choices: ["Iron", "Vibranium", "Copper", "Ore"],
         correctAns: 1
     },
     {
@@ -45,11 +45,21 @@ var trivia = [{
 
 // START THE GAME 
 $("#start").on("click", function (event) {
+    $(this).hide();
+    // answers correct
+    var score = 0;
+
+    // wrong answers
+    var wrong = 0;
+
+    // unanswered answers
+    var unanswered = 0;
+
+    // questions to show 
+    showQuestion();
 
     // timer goes here
     clock();
-    // questions to show 
-    showQuestion();
 });
 
 // editing above 
@@ -61,6 +71,8 @@ $("#start").on("click", function (event) {
 
 // if more questions render next question
 function showQuestion() {
+
+    console.log("show question running");
     $("#question").html("<p class= 'text'>" + trivia[questionIndex].q + "</p>");
 
     // answers 
@@ -73,16 +85,19 @@ function showQuestion() {
         trivia[questionIndex].choices[3] +
         "</p>";
     $("#answer").html(answerInput);
-}
+    console.log(answerInput + "at line 88");
+} 
+
+// showQuestion();
 
 // user selects answer 
-$("#answer").on("click", ".answerChoice", function(event) {
+$("#answer").on("click", ".answerChoice", function (event) {
     // console.log("hi clicked")
     answerChoice = $(this).text();
     console.log(answerChoice);
     correctChoice = trivia[questionIndex].choices[trivia[questionIndex].correctAns];
     console.log(correctChoice);
-    if (answerChoice === correctChoice){
+    if (answerChoice === correctChoice) {
         correctGuess();
         clearInterval(intervalId);
         // increase wins
@@ -93,50 +108,59 @@ $("#answer").on("click", ".answerChoice", function(event) {
         clearInterval(intervalId);
 
     }
-}); 
+});
 
 // if correct guess 
-
-  function correctGuess(){
-      score++;
-      $("#time-left").hide();
-      gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>"
-      + "<h2 class = 'text-center'> Correct! <br> <br>The answer is: " + correctChoice + "</h2>";
+function correctGuess() {
+    score++;
+    $("#time-left").hide();
+    $("#question").empty();
+    $("#answer").empty();
+    gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining: <span class = 'timer'> " + timeCounter + "</span></h3>" +
+        "<h2 class = 'text-center'> Correct! <br> <br>The answer is: " + correctChoice + "</h2>";
     // console.log(gameHTML);
-    $("#triviaGame").html(gameHTML);
+    $("#summary").html(gameHTML);
 
     setTimeout(bridge, 2500);
-    }; 
+};
 
 // bridges to next question or ends game 
-    function bridge() {
-        // console.log("bridgng")
-if (questionIndex < 3) {
-    questionIndex++;
-    // console.log(questionIndex + "at line 171");
-    showQuestion();
-    // THIS IS WHERE I LEFT OFF, I NEED THE NEXT QUESTION TO RENDER 
-    // ONCE THE FIRST QUESTION HAS BEEN SUBMITTED 
-    
-    // $("#time-left").show();
-    // timeCounter = 30; 
-    // clock();
-    
- }
-//   else {
-//     // endGame();
-// }
+function bridge() {
+    // console.log(questionIndex);
+    if (questionIndex < 3) {
+        questionIndex++;
+        // console.log(questionIndex);
+        showQuestion();
+
+        $("#summary").empty();
+        $("#time-left").show();
+        timeCounter = 30;
+        clock();
+
+        //     // THIS IS WHERE I LEFT OFF, I NEED THE NEXT QUESTION TO RENDER 
+        //     // ONCE THE FIRST QUESTION HAS BEEN SUBMITTED 
+
+        //     // $("#time-left").show();
+        //     // timeCounter = 30; 
+        //     // clock();
+
+        //  }
+        //   else {
+        //     // endGame();
+    } else {
+        console.log("huh???")
     }
+}
 
 // if wrong guess 
-function wrongGuess(){
+function wrongGuess() {
     wrong++;
     $("#time-left").hide();
-    gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>"
-    + "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
-  // console.log(gameHTML);
-  $("#triviaGame").html(gameHTML);
-  }; 
+    gameHTML = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>" +
+        "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
+    // console.log(gameHTML);
+    $("#triviaGame").html(gameHTML);
+};
 
 
 //====================================================
