@@ -18,24 +18,6 @@ var counter = 0;
 var intervalId = 0;
 var timeCounter = 30;
 
-
-// QUESTIONS
-
-// var questionsArray = [
-//     "Black Panther has a degree in: ",
-//     "What rare metal is mined in Wakanda?"
-// ];
-
-// var answersArray = [
-//     ["Chemistry", "Astronomy", "Computer science", "Physics"],
-//     ["Iron", "Virbanium", "Copper", "Ore"]
-
-// ]
-
-// var correctArray = [
-//     "D. Physics",
-//     "B. Vibranium"
-// ]
 var trivia = [{
         // image: 
         q: "Black Panther has a degree in: ",
@@ -73,43 +55,6 @@ $("#start").on("click", function (event) {
 // editing above 
 
 // ===================================================
-
-// when a user presses a key, it will run the function 
-$("#triviaForm").click(function () {
-    // determine which key was pressed
-    var userInput = $("input[name=question1]:checked").val();
-    console.log(userInput);
-
-    // if no answer increase variable of no answers 
-    if (!userInput) {
-        // console.log(userInput);
-        unanswered++;
-        // if correct answer, increase and update score
-    } else if (userInput === answersArray[answersIndex][0]) {
-        console.log("correct!");
-        score++;
-        // updateScore();else {
-    } else {
-        // if anything else, this means it's incorrect and increate that variable 
-        wrong++;
-        console.log("incorrect!")
-    };
-
-
-    // END TEST
-    // increment the answerIndex variable 
-    answersIndex++;
-});
-
-// POTENTIALLY REMOVE
-// function that showes the correct answers total score
-// function updateScore() {
-//     $("#score").append(score);
-// }
-
-// updateScore();
-
-// -------------------------------------------------
 
 //------------------------------------------------
 // TRIVIA QUESTIONS BEGIN HERE
@@ -163,8 +108,24 @@ $("#answer").on("click", ".answerChoice", function(event) {
     setTimeout(bridge, 2500);
     }; 
 
+// bridges to next question or ends game 
     function bridge() {
-        console.log("briding")
+        // console.log("bridgng")
+if (questionIndex < 3) {
+    questionIndex++;
+    // console.log(questionIndex + "at line 171");
+    showQuestion();
+    // THIS IS WHERE I LEFT OFF, I NEED THE NEXT QUESTION TO RENDER 
+    // ONCE THE FIRST QUESTION HAS BEEN SUBMITTED 
+    
+    // $("#time-left").show();
+    // timeCounter = 30; 
+    // clock();
+    
+ }
+//   else {
+//     // endGame();
+// }
     }
 
 // if wrong guess 
@@ -175,10 +136,6 @@ function wrongGuess(){
     + "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
   // console.log(gameHTML);
   $("#triviaGame").html(gameHTML);
-
-  $("#question").empty();
-  $("#answer").empty();
-
   }; 
 
 
