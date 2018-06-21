@@ -1,18 +1,3 @@
-// VARIABLES 
-
-// questions begin here 
-var questions = {
-    q1: ["Black Panther has a degree in: "],
-    q2: ["What rare metal is mined in Wakanda?"]
-};
-
-// object answers
-var answers = {
-    q1: ["2"],
-    q2: ["4"],
-    q3: ["1"],
-};
-
 // answers correct
 var score = 0;
 
@@ -25,54 +10,69 @@ var unanswered = 0;
 // hold questions index
 var questionIndex = 0;
 
-questionsArray = [questions.q1, questions.q2];
-
 // var to hold the index of current answer
 var answersIndex = 0;
 
-// array of answers 
-var answersArray = [answers.q1, answers.q2];
-
 // Clock
-var counter= 0; 
+var counter = 0;
 var intervalId = 0;
-var timeCounter = 30; 
+var timeCounter = 30;
+
+
+// QUESTIONS
+
+// var questionsArray = [
+//     "Black Panther has a degree in: ",
+//     "What rare metal is mined in Wakanda?"
+// ];
+
+// var answersArray = [
+//     ["Chemistry", "Astronomy", "Computer science", "Physics"],
+//     ["Iron", "Virbanium", "Copper", "Ore"]
+
+// ]
+
+// var correctArray = [
+//     "D. Physics",
+//     "B. Vibranium"
+// ]
+var trivia = [
+    {
+        // image: 
+        q: "Black Panther has a degree in: ",
+        choices: ["Chemistry", "Astronomy", "Computer science", "Physics"],
+        correctAns: 3
+    },
+    {
+        // image: 
+        q: "What rare metal is mined in Wakanda?",
+        choices: ["Iron", "Virbanium", "Copper", "Ore"],
+        correctAns: 1
+    },
+    {
+        // image: 
+        q: "Black Panther married ",
+        choices: ["Nakia", "Okoye", "Storm", "Gamora"],
+        correctAns: 2
+    }
+
+];
 
 // =======================================================
-
-// MAIN TRIVIA BEGINS HERE
-
-// if more questions render next question
-function showQuestion() {
-    if (questionIndex <= (questionsArray.length - 1))
-
-    {
-        $("#triviaGame").html(questionsArray[questionIndex][0]);
-    }
-    // if there aren't render the end of the game 
-    else {
-        gameOver();
-    }
-}
-
-// ** updating score may need to be added
 
 // MAIN LOGIC 
 
 // START THE GAME 
-$("#start").on("click", function(event) {
-    
+$("#start").on("click", function (event) {
+
     // timer goes here
     clock();
     // questions to show 
     showQuestion();
 });
 
-
-
-
-
 // editing above 
+
 // ===================================================
 
 // when a user presses a key, it will run the function 
@@ -110,26 +110,71 @@ $("#triviaForm").click(function () {
 
 // updateScore();
 
-
 // -------------------------------------------------
 
+function generateHTML() {
+    console.log("generateHTML  counter " + counter);
+    //<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p>
+    gameHTML =
+        "<h2 class='text-center timer-p'> Time Remaining: <span class='timer'>" +
+        timerCounter +
+        "</span></h2><h3 class='text-center'>" +
+        questionsArray[counter] +
+        "</h3><h3 class='answer'>A. " +
+        answersArray[counter][0] +
+        "</h3><h3 class='answer'>B. " +
+        answersArray[counter][1] +
+        "</h3><h3 class='answer'>C. " +
+        answersArray[counter][2] +
+        "</h3><h3 class='answer'>D. " +
+        answersArray[counter][3] + "</h3>";
+    $(".gameDiv").html(gameHTML);
+    console.log("generateHTML counter2 " + counter);
+};
+
+
+//------------------------------------------------
+// TRIVIA QUESTIONS BEGIN HERE
+
+// if more questions render next question
+function showQuestion() {
+$("#question").html("<p class= 'text'>" + trivia[questionIndex].q + "</p>");
+
+// answers 
+answerInput = "<p class = 'answerChoice'>" + trivia[questionIndex].choices[0] 
++ "</p> <p class = 'answerChoice'>" 
++ trivia[questionIndex].choices[1] 
++ "</p> <p class = 'answerChoice'>"
++ trivia[questionIndex].choices[2]
++ "</p> <p class = 'answerChoice'>"
++ trivia[questionIndex].choices[3]
++ "</p>"
+
+;
+$("#answer").html(answerInput);
+}
+
+// ** updating score may need to be added
+
+//====================================================
+
 // TIMER BEGINS HERE 
- 
- function clock() {
+
+function clock() {
     // every second show time left
     intervalId = setInterval(timeLeft, 1000);
 
-    function timeLeft(){
+    function timeLeft() {
         if (timeCounter === 0) {
             clearInterval(intervalId);
             // outOfTime();
-        } else if (timeCounter > 0 ){
+        } else if (timeCounter > 0) {
             timeCounter--;
         }
-    $("#time-left").html(timeCounter);
+        $("#time-left").html(timeCounter);
     }
 }
-    
+
 
 // function when game over
 function gameOver() {
