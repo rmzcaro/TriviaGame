@@ -142,8 +142,6 @@ function bridge() {
         // console.log(questionIndex);
         showQuestion();
         // clearInterval(intervalId);
-
-        
         $("#summary").empty();
         $("#time-left").show();
         timeCounter = 4;
@@ -189,6 +187,7 @@ $("#restart").on("click", function (restart) {
     // total unanswered
     $("#unanswered").empty();
 
+    console.log(questionIndex + "at reset line 190");
     // answers correct
     var score = 0;
     // wrong answers

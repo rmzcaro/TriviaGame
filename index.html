@@ -1,4 +1,44 @@
-<!--
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <h1>Black Panther Trivia</h1>
+
+    <button id="start">Begin</button>
+
+    <div id="time-left">30</div>
+
+    <!--form here -->
+    <div class="container">
+        <div id="triviaGame">
+            <p id="question"></p>
+            <p id="answer"></p>
+            <p id="summary"></p>
+
+            <div id="finalSummary">
+
+            </div>
+            <p id="score"></p>
+            <p id="wrong"></p>
+            <p id="unanswered"></p>
+
+        </div>
+
+        <button id="restart">Start Over?</button>
+    </div>
+        <!--
 
     PSEUDOCODE
 
@@ -12,71 +52,21 @@
 
     theme: black panther 
 
-    // Questions and answers 
-
-    1. Black Panther has a degree in 
-    options: Chemistry, Astronomy, Computer science 
-    correct: Physics
-
-    2.What rare metal is mined in Wakanda? 
-    options: Iron, Copper, Ore
-    correct: Vibranium
-
-    3. Black Panther married 
-    options: Nakia, Okoye, Gamora
-    correct: Storm 
-
-    4. The other city that Black Panther rules: 
-    options: Kamar-Taj, Bagalia, Symkaria
-    correct: Necropolis
-
-    5. Nakia is part of the 
-    options: Border, Golden, Jabari
-    correct: River 
-
 -->
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-</head>
+        <!--jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--script -->
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <!--bootstrap -->
 
-<body>
-
-    <h1>Trivia Game</h1>
-
-    <button id="start">Begin Trivia!</button>
-
-    <div id="time-left">30</div>
-
-    <!--form here -->
-    <div class="container">
-        <div id="triviaGame">
-                <p id="question"></p>
-                <p id="answer"></p>
-                <p id="summary"></p>
-
-        <div id="finalSummary">
-            
-            </div>
-            <p id="score"></p>
-            <p id="wrong"></p>
-            <p id="unanswered"></p>
-
-    </div>
-
-    <button id="restart">Start Over?</button>
-  
-
-    <!--jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--script -->
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
 </body>
-
 
 </html>
