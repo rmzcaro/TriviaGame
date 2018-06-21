@@ -15,8 +15,7 @@ var answersIndex = 0;
 
 // Clock
 var counter = 0;
-var intervalId = 0;
-var timeCounter = 30;
+var timeCounter = 4;
 
 var trivia = [{
         // image: 
@@ -35,6 +34,18 @@ var trivia = [{
         q: "Black Panther married ",
         choices: ["Nakia", "Okoye", "Storm", "Gamora"],
         correctAns: 2
+    },
+    {
+        // image: 
+        q: "The other city that Black Panther rules:",
+        choices: ["Kamar-Taj", "Bagalia", "Symkaria", "Necropolis"],
+        correctAns: 3
+    },
+    {
+        // image: 
+        q: "Nakia is part of the ",
+        choices: ["River", "Border", "Golden", "Jabari"],
+        correctAns: 0
     }
 
 ];
@@ -42,6 +53,8 @@ var trivia = [{
 // =======================================================
 
 // MAIN LOGIC 
+
+$("#restart").hide();
 
 // START THE GAME 
 $("#start").on("click", function (event) {
@@ -62,7 +75,6 @@ $("#start").on("click", function (event) {
     clock();
 });
 
-// editing above 
 
 // ===================================================
 
@@ -86,7 +98,7 @@ function showQuestion() {
         "</p>";
     $("#answer").html(answerInput);
     // console.log(answerInput + "at line 88");
-} 
+}
 
 // user selects answer 
 $("#answer").on("click", ".answerChoice", function (event) {
@@ -125,14 +137,16 @@ function correctGuess() {
 // bridges to next question or ends game 
 function bridge() {
     // console.log(questionIndex);
-    if (questionIndex < 2) {
+    if (questionIndex < 4) {
         questionIndex++;
         // console.log(questionIndex);
         showQuestion();
+        // clearInterval(intervalId);
 
+        
         $("#summary").empty();
         $("#time-left").show();
-        timeCounter = 30;
+        timeCounter = 4;
         clock();
 
     } else {
@@ -154,6 +168,43 @@ function wrongGuess() {
     setTimeout(bridge, 2000);
 };
 
+// function when time is up 
+function timeUp() {
+    console.log("time up")
+    unanswered++;
+    setTimeout(bridge, 1000);
+};
+
+// ===================================================
+// RESTART game 
+
+
+$("#restart").on("click", function (restart) {
+    console.log("restart works");
+    $(this).hide();
+    $("#time-left").empty();
+    $("#finalSummary").empty();
+    $("#score").empty();
+    $("#wrong").empty();
+    // total unanswered
+    $("#unanswered").empty();
+
+    // answers correct
+    var score = 0;
+    // wrong answers
+    var wrong = 0;
+    // unanswered answers
+    var unanswered = 0;
+    // hold questions index
+    var questionIndex = 0;
+    // Clock
+    var timeCounter = 4;
+
+    showQuestion();
+    clock();
+
+})
+
 
 //====================================================
 
@@ -166,32 +217,32 @@ function clock() {
     function timeLeft() {
         if (timeCounter === 0) {
             clearInterval(intervalId);
-            // outOfTime();
+            timeUp();
         } else if (timeCounter > 0) {
+            $("#time-left").html(timeCounter);
             timeCounter--;
+
         }
-        $("#time-left").html(timeCounter);
     }
 }
 
+//============================================================
 
-// function when time is up 
-function timeUp() {
-    console.log("time up")
-}
-
-// function when game over
+// GAME OVER function 
 function gameOver() {
     console.log("game over");
+    $("#time-left").empty();
+    $("#question").empty();
+    $("#answer").empty();
     $("#summary").empty();
-    // byeMsg = "<h3 class = 'text-center timer-p'> Time Remaining:<span class = 'timer'>" + timeCounter + "</span></h3>" +
-    // "<h2 class = 'text-center'> Sorry, that's the wrong answer. <br> <br>The answer is: " + correctChoice + "</h2>";
 
-    $("#finalSummary").append( "<h3 class = 'text-center timer-p'> Game over!<span class = 'timer'>" + "</span></h3>")
+    $("#finalSummary").append("<h3 class = 'text-center timer-p'> Game over!<span class = 'timer'>" + "</span></h3>")
     $("#score").append("Total correct: " + score);
     $("#wrong").append("Total incorrect: " + wrong);
     // total unanswered
     $("#unanswered").append("Total unanswered: " + unanswered);
 
+    // $("#restart").append("restart?")
+    $("#restart").show();
 
 }
