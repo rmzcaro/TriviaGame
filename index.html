@@ -1,12 +1,38 @@
-<!--PSEUDOCODE 
+<!--
 
-When user loads page show list of questions and timer begins 
+    PSEUDOCODE
 
-User is able to select one answer only 
+    Show start button in div upon screen loading 
 
-Once user completes all questions, user can submit and see the number of correct, incorrect, and unanswered 
+    Once start button clicked show timer and form with all questions and answers 
 
-If time is up before user completes, end game and show number of correct, incorrect answers, unanswered
+    user is able to select one answer only and once finished clicks on submit button 
+
+    once submitted, show RESULTS: correct, incorrect, and unanswered 
+
+    theme: black panther 
+
+    // Questions and answers 
+
+    1. Black Panther has a degree in 
+    options: Chemistry, Astronomy, Computer science 
+    correct: Physics
+
+    2.What rare metal is mined in Wakanda? 
+    options: Iron, Copper, Ore
+    correct: Vibranium
+
+    3. Black Panther married 
+    options: Nakia, Okoye, Gamora
+    correct: Storm 
+
+    4. The other city that Black Panther rules: 
+    options: Kamar-Taj, Bagalia, Symkaria
+    correct: Necropolis
+
+    5. Nakia is part of the 
+    options: Border, Golden, Jabari
+    correct: River 
 
 -->
 <!DOCTYPE html>
@@ -25,17 +51,20 @@ If time is up before user completes, end game and show number of correct, incorr
 
     <button id="start">Begin Trivia!</button>
 
-    <div id="time-left">text</div>
+    <div id="time-left">Timer Here</div>
 
     <p id="score"></p>
+    <p id="wrong"></p>
+    <p id="unanswered"></p>
     <p id="question"></p>
 
     <!--form here -->
     <div class="container">
         <div id="triviaGame">
 
-            <form name="triviaForm"></form>
-
+            <!-- <form id = "triviaForm">
+            
+            <div id="q1">
             <h3>1. Where was Nakia born?</h3>
             <label class="radio-inline">
                 <input type="radio" class="q1" name="question1" value="1"> United States
@@ -49,29 +78,43 @@ If time is up before user completes, end game and show number of correct, incorr
             <label class="radio-inline">
                 <input type="radio" class="q1" name="question1" value="4"> France
             </label>
-
-            <h3>2. Where was Nakia age?</h3>
-            <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="1"> 29
-            </label>
-            <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="2"> 18
-            </label>
-            <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="3"> 30
-            </label>
-            <label class="radio-inline">
-                <input type="radio" class="q1" name="question2" value="4"> Unknown
-            </label>
-            </form>
-
-            <div id="trivia-results">
-                <div id="incorrect"></div>
-                <div id="questions-unanswered"></div>
-
             </div>
 
+            <div id="q2">
+            <h3>2. What was Nakia age?</h3>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="1"> 29
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="2"> 18
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="3"> 30
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="4"> Unknown
+            </label>
         </div>
+
+            <div id="q3">
+            <h3>3. Sample question?</h3>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="1"> 29
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="2"> 18
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="3"> 30
+            </label>
+            <label class="radio-inline">
+                <input type="radio" class="q1" name="question1" value="4"> Unknown
+            </label>
+        </div>
+
+            </form>
+
+        </div> -->
 
 
     </div>
